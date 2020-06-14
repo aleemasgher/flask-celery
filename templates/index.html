@@ -60,6 +60,29 @@
               line-height: 22px;
               padding: 14px 16px;
           }
+
+          .timepicker-digital-display {
+              -webkit-box-flex: 1;
+              -webkit-flex: 1 auto;
+              -ms-flex: 1 auto;
+              flex: 1 auto;
+              background-color: #4AB9ED !important;
+              padding: 10px;
+              font-weight: 300;
+          }
+
+          .timepicker-close {
+              color: #4AB9ED !important;
+          }
+
+          .timepicker-canvas line {
+              stroke: #4AB9ED !important;
+          }
+
+          .timepicker-canvas-bg,
+          .timepicker-canvas-bearing {
+              fill: #4AB9ED !important;
+          }
       </style>
   </head>
   
@@ -120,17 +143,15 @@
             <div class="input-field col s6">
               <input id="duration" name="duration"
                      required
-                     type="number"
-                     placeholder="Enter duration as a number. for example: 3" class="validate">
+                     type="text"
+                     class="timepicker validate">
               <label for="duration">Duration</label>
             </div>
     
             <div class="input-field col s6">
               <select name="duration_unit">
-                <option value="minutes">Minutes</option>
-                <option value="hours">Hours</option>
-                <option value="days">Days</option>
-                <option value="weeks">Weeks</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
               </select>
               <label>Duration</label>
             </div>
@@ -152,6 +173,9 @@
       document.addEventListener('DOMContentLoaded', function() {
         let elems = document.querySelectorAll('select');
         let instances = M.FormSelect.init(elems);
+
+        let time = document.querySelectorAll('.timepicker');
+        let time_instances = M.Timepicker.init(time);
       });       
     </script>    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

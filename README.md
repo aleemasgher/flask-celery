@@ -16,6 +16,14 @@ Navigate back to the project directory and run the following command
 $ pip install -r requirements.txt
 ```
 
+Db Configure
+```
+Navigate back to the project directory and run the following command
+$ flask db init
+$ flask db migrate -m "recipient_information table"
+$ flask db upgrade
+```
+
 Start the Flask app
 ```
 $ python app.py
@@ -23,6 +31,8 @@ $ python app.py
 
 Start the Celery Cluster in a separate terminal window
 ```
+$ celery beat -A app.client --loglevel=info
+Than on new terminal window
 $ celery worker -A app.client --loglevel=info
 ```
 
